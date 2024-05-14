@@ -2,4 +2,6 @@ A: Hi how are you?
 
 B: Good!
 
-A:
+A: Haha this is new
+
+## git config
