@@ -20,11 +20,11 @@ def add_overlay(frame, overlay, position, angle):
 
     # 이미지 회전
     center = (w // 2, h // 2)
-    M = cv2.getRotationMatrix2D(center, angle, 1.0)
+    M = cv2.getRotationMatrix2D(center, -angle, 1.0)
     rotated_overlay = cv2.warpAffine(overlay, M, (w, h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=(0,0,0,0))
 
     for c in range(0, 3):
-        frame[y:y+h, x:x+w, c] = (alpha_s * overlay[:, :, c] +
+        frame[y:y+h, x:x+w, c] = (alpha_s * rotated_overlay[:, :, c] +
                                   alpha_l * frame[y:y+h, x:x+w, c])
 
     return frame
