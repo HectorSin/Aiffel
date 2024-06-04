@@ -8,7 +8,7 @@ detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor('models/shape_predictor_68_face_landmarks.dat')
 
 # 합성할 이미지 로드
-overlay_image = cv2.imread('images/Crown.png', cv2.IMREAD_UNCHANGED)
+overlay_image = cv2.imread('images/cat-whiskers.png', cv2.IMREAD_UNCHANGED)
 
 def add_overlay(frame, overlay, position, angle):
     x, y, w, h = position
@@ -23,10 +23,9 @@ def add_overlay(frame, overlay, position, angle):
     M = cv2.getRotationMatrix2D(center, -angle, 1.0)
     rotated_overlay = cv2.warpAffine(overlay, M, (w, h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=(0,0,0,0))
 
-    for c in range(0, 3):
+    for c in range(0, 2):
         frame[y:y+h, x:x+w, c] = (alpha_s * rotated_overlay[:, :, c] +
                                   alpha_l * frame[y:y+h, x:x+w, c])
-
     return frame
 
 # 얼굴의 각도 계산
@@ -63,7 +62,8 @@ while True:
         height = bottom[1] - top[1]
 
         # 얼굴 위치에 합성 이미지 추가
-        position = (left[0], top[1] - height // 2, width, height)
+        # position = (left[0], top[1] - height // 2, width, height)
+        position = (left[0], top[1], width, height)
         
         # 얼굴 각도 계산
         angle = calculate_angle(landmarks)
