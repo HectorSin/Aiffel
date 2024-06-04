@@ -7,7 +7,12 @@ detector = dlib.get_frontal_face_detector()
 # dlib에서 제공하는 pre-trained 모델
 predictor = dlib.shape_predictor('models/shape_predictor_68_face_landmarks.dat')
 
-# 합성할 이미지 로드
+# 사전 학습된 모델은 아래 코드로 다운로드 가능
+# !wget http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
+# !bzip2 -d shape_predictor_68_face_landmarks.dat.bz2
+
+
+# 합성할 이미지 로드 [여기서는 고양이 수염 이미지]
 overlay_image = cv2.imread('images/cat-whiskers.png', cv2.IMREAD_UNCHANGED)
 
 def add_overlay(frame, overlay, position, angle):
@@ -23,7 +28,7 @@ def add_overlay(frame, overlay, position, angle):
     M = cv2.getRotationMatrix2D(center, -angle, 1.0)
     rotated_overlay = cv2.warpAffine(overlay, M, (w, h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=(0,0,0,0))
 
-    for c in range(0, 2):
+    for c in range(0, 3):        
         frame[y:y+h, x:x+w, c] = (alpha_s * rotated_overlay[:, :, c] +
                                   alpha_l * frame[y:y+h, x:x+w, c])
     return frame
@@ -69,6 +74,9 @@ while True:
         angle = calculate_angle(landmarks)
 
         frame = add_overlay(frame, overlay_image, position, angle)
+
+    # 프레임 좌우 반전
+    frame = cv2.flip(frame, 1)
 
     cv2.imshow('Face Overlay', frame)
 
