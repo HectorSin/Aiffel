@@ -44,8 +44,14 @@ pip install pixellib==0.6.6
 [module.py]
 - 코드들의 실행을 모듈화 시킨 파일
 
-[run.py]
-- 코드 실행 파일
+[run_cromaky.py]
+- 크로마키 처리 코드 실행 파일
+
+[run_blur.py]
+- 블러 처리 코드 실행 파일
+
+[real_time.py]
+- 실시간 블러처리 코드 실행 파일
 
 # 실행 방법
 같은 폴더내 requirements.txt로 패키지 설치
