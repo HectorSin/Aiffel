@@ -120,14 +120,23 @@ def segment_cromaky(img_path, target_class):
     return img_concat
 
 
-def real_time(frame, target_class):
+def real_time(frame, target_class, img_path):
+    # PASCAL VOC 데이터에서 제공하는 레이블 이름
     LABEL_NAMES = [
         'background', 'aeroplane', 'bicycle', 'bird', 'boat', 'bottle', 'bus',
         'car', 'cat', 'chair', 'cow', 'diningtable', 'dog', 'horse', 'motorbike',
         'person', 'pottedplant', 'sheep', 'sofa', 'train', 'tv'
     ]
 
+    """
+    목적
+    PixelLib의 segmentAsPascalvoc 메서드는 이미지 파일 경로를 입력으로 받습니다. 
+    그러나 비디오 캡처로부터 얻은 프레임은 numpy 배열 형식입니다. 
+    따라서 numpy 배열을 파일로 저장한 후, 그 파일 경로를 segmentAsPascalvoc 메서드에 전달해야 합니다.
+    """
+
     # numpy 배열을 임시 이미지 파일로 저장
+    # tempfile.NamedTemporaryFile을 사용하여 임시 파일을 생성하고 numpy 배열로 된 비디오 프레임을 PIL 이미지를 통해 '.jpg' 형식으로 저장
     with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as temp_file:
         temp_image_path = temp_file.name
         pil_image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
@@ -160,7 +169,21 @@ def real_time(frame, target_class):
         img_bg_mask = cv2.bitwise_not(img_mask_color)
         img_bg_blur = cv2.bitwise_and(img_orig_blur, img_bg_mask)
 
-        img_concat = np.where(img_mask_color == 255, frame, img_bg_blur)
+        ### 크로마키 사진의 shape을 기존 사진과 동일하게 설정하기
+        img_background = cv2.imread(img_path)
+
+        # 픽셀 값 걸정
+        back_height = frame.shape[0]
+        bach_width = frame.shape[1]
+
+        #이미지 크기 조절
+        resized_img = cv2.resize(img_background, (bach_width, back_height))
+
+        img_background = resized_img
+        img_concat = np.where(img_mask_color==255, frame, img_background)
+        # img_concat = np.where(img_mask_color == 255, frame, img_bg_blur)
+
+
     finally:
         os.remove(temp_image_path)
 

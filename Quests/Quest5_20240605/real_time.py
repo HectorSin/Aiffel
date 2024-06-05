@@ -10,7 +10,7 @@ while True:
     if not ret:
         break
 
-    processed_frame = real_time(frame, target_class=15)  # 예: 'person' 클래스 ID가 15
+    processed_frame = real_time(frame, target_class=15, img_path='images/wave.png')  # 예: 'person' 클래스 ID가 15
 
     cv2.imshow('Video', processed_frame)
 
