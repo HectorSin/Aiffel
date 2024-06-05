@@ -16,6 +16,6 @@ while True:
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-
+# 카메라 장치에서 받아온 메모리를 해제하여 카메라 객체 해제
 cap.release()
 cv2.destroyAllWindows()

@@ -160,14 +160,13 @@ def real_time(frame, target_class, img_path):
         seg_color = colormap[target_class][::-1]
         seg_map = np.all(output == seg_color, axis=-1)
 
-        img_show = frame.copy()
         img_mask = seg_map.astype(np.uint8) * 255
-        color_mask = cv2.applyColorMap(img_mask, cv2.COLORMAP_JET)
-        img_orig_blur = np.full_like(frame, (0, 255, 0), dtype=np.uint8)
+        # color_mask = cv2.applyColorMap(img_mask, cv2.COLORMAP_JET)
+        # img_orig_blur = np.full_like(frame, (0, 255, 0), dtype=np.uint8)
 
         img_mask_color = cv2.cvtColor(img_mask, cv2.COLOR_GRAY2BGR)
-        img_bg_mask = cv2.bitwise_not(img_mask_color)
-        img_bg_blur = cv2.bitwise_and(img_orig_blur, img_bg_mask)
+        # img_bg_mask = cv2.bitwise_not(img_mask_color)
+        # img_bg_blur = cv2.bitwise_and(img_orig_blur, img_bg_mask)
 
         ### 크로마키 사진의 shape을 기존 사진과 동일하게 설정하기
         img_background = cv2.imread(img_path)
