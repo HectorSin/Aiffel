@@ -1,5 +1,5 @@
 # 모두의 연구소 아이펠캠퍼스 쉐벨그투
 
-[## 1. 웹캠활용 실시간 모델 구현](CVreal_time/README.md)
+## [1. 웹캠활용 실시간 모델 구현](CVreal_time/README.md)
 
 ## 2. 미정
