@@ -1,7 +1,5 @@
 ### [피어리뷰 보러가기(클릭)](PRT.md)
 
-### [피어리뷰 보러가기(클릭)](PRT.md)
-
 # 프로젝트 설명
 **프로젝트: 네이버 영화리뷰 감성분석 도전**
 네이버 영화 리뷰 속 이용자의 감정이 긍정인지 혹은 부정인지를 분류(Classification) 하는 딥러닝 모델 만들기
@@ -34,20 +32,48 @@ conda list --export > requirements.txt
 pip install -r requirements.txt
 
 # 실행 결과
-## 
+## 기본 LSTM 모델
+![LSTM](img/try1.png)
+![LSTM](img/try1A.png)
+
+## word2Vec 적용
+![LSTM](img/try1-wv.png)
+![LSTM](img/try2-wvA.png)
 
 
 # 솔루션
+사전 학습 모델을 활용하여 파라미터 튜닝을 통해 해결가능해 보임
+
+훈련에 사용된 데이터 셋에도 전처리가 필요해 보이는 부분들이 보여서 처리하는 작업이 필요해 보임
+![jun](img/jun.png)
 
 # 회고
 
 ## 배운점
+konlp 패키지가 가진 여러 문제점들이 있어서, 윈도우 환경보다도 우분투나 리눅스 환경에서 해야한다는걸 깨달았습니다.
 
 ## 아쉬운점
-
+제대로 모델을 많이 돌려보지 못해 너무 아쉬웠습니다.
 
 ## 느낀점
+정말 한글은 어려운 언어구나 하는 생각이 들었습니다.
+
+## 궁금한 내용
+1. GlobalMaxPooling1D와 Max Pooling의 차이점은 뭔가?
+- GlobalMP는 여기서는 전체 문장 또는 나뉘어진 전체 집합에서 가장 중요한 단어를 피처로 추출하는 방식
+- Max Pooling은 각 대상 영역에서 가장 중요한 단어를 피처로 추출하는 방식
+
+2. 워드 벡터를 다루는 여러 패키지들이 있는거 같은데, 어떤 것들이 있고 어떤 장단점들이 있는가?
+- 
 
 # 참고자료
 
 [![Lecture](img/lecture.png)](https://www.youtube.com/watch?v=-SHPG_KMUkQ)
+
+[11-02 자연어 처리를 위한 1D CNN(1D Convolutional Neural Networks)](https://wikidocs.net/80437)
+
+[[바람돌이/딥러닝] LSTM, GRU 이론 및 개념(Long Short Term Memory, Gated Recurrent Unit)](https://blog.naver.com/winddori2002/221992543837)
+
+[Gated Recurrent Units](https://yjjo.tistory.com/18)
+
+[![word2vec](img/word2vec.png)](https://www.youtube.com/watch?v=sY4YyacSsLc&t=126s)
