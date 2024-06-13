@@ -4,9 +4,11 @@ Quests/quest5_20240605/models/
 # Quests/quest5_20240605/images/
 Quests/quest5_20240605/aiffel.ipynb
 Quests/quest6_20240612/aiffel.ipynb
+Quests/quest7_20240613/aiffel.ipynb
 
 Book/
 
 ShareValue/CVreal_time/data/
+Quests/quest7_20240613/data/
 
 Quests/Quest6_20240612/data/GoogleNews-vectors-negative300.bin.gz
