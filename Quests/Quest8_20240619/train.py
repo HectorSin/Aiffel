@@ -4,9 +4,10 @@ import datetime
 import os
 import re
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-from transformer.Models import transformer, PositionalEncoding, Encoder, Decoder
-from transformer.Layers import EncoderLayer, DecoderLayer
-from transformer.SubLayers import MultiHeadAttention
+from transformer.Models import transformer
+# from transformer.Models import transformer, PositionalEncoding, Encoder, Decoder
+# from transformer.Layers import EncoderLayer, DecoderLayer
+# from transformer.SubLayers import MultiHeadAttention
 
 # 사용할 샘플의 최대 개수
 MAX_SAMPLES = 50000
