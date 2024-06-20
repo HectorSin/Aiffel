@@ -105,7 +105,7 @@ dataset = dataset.prefetch(tf.data.experimental.AUTOTUNE)
 
 # 하이퍼파라미터
 VOCAB_SIZE = 10000  # 예시 값
-NUM_LAYERS = 4  # 예시 값
+NUM_LAYERS = 6  # 예시 값
 D_MODEL = 256  # 예시 값
 NUM_HEADS = 8  # 예시 값
 UNITS = 512  # 예시 값
@@ -133,7 +133,7 @@ if __name__ == '__main__':
     model.summary()
 
     # 데이터셋 사용하여 모델 학습
-    EPOCHS = 60  # 예시 값
+    EPOCHS = 25  # 예시 값
     model.fit(dataset, epochs=EPOCHS)
     time = datetime.datetime.now().strftime('%Y%m%d%H%M')
     model_name = f'model/transformer_{EPOCHS}epoch_{time}.h5'

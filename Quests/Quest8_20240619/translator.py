@@ -13,8 +13,11 @@ import tensorflow_datasets as tfds
 
 
 tokenizer = tfds.deprecated.text.SubwordTextEncoder.load_from_file('tokenizer/tokenizer')
+model_location = 'model/'
 
-model_name = 'model/transformer_60epoch_202406201307.h5'
+model = 'transformer_25epoch_202406201639.h5'
+
+model_name = model_location + model
 
 # 저장된 모델 불러오기
 loaded_model = tf.keras.models.load_model(model_name,
