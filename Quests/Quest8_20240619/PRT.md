@@ -22,7 +22,7 @@
 
 - [x]  **3. 체크리스트에 해당하는 항목들을 모두 수행하였나요? (문제 해결)**
     - [x]  데이터를 분할하여 프로젝트를 진행했나요? (train, validation, test 데이터로 구분)
-    - [ ]  하이퍼파라미터를 변경해가며 여러 시도를 했나요? (learning rate, dropout rate, unit, batch size, epoch 등)
+    - [x]  하이퍼파라미터를 변경해가며 여러 시도를 했나요? (learning rate, dropout rate, unit, batch size, epoch 등)
     - [x]  각 실험을 시각화하여 비교하였나요?
         ![alt text](./reviewimg/image-1.png)
     - [ ]  모든 실험 결과가 기록되었나요?
