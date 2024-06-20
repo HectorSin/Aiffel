@@ -74,13 +74,13 @@ Quest8_20240619/
 
 ![tran](img/transformer.png)
 
-이 모델은 **[Attention is All you Need](https://github.com/jadore801120/attention-is-all-you-need-pytorch/tree/master)**에서 최대한 참고하여 재구현한 모델입니다.
+이 모델은 [Attention is All you Need](https://github.com/jadore801120/attention-is-all-you-need-pytorch/tree/master)에서 최대한 참고하여 재구현한 모델입니다.
 
 전체적인 트랜스포머 모델은 [트랜스포머.py](transformer/Models.py) 파일 안의 transformer 함수로 시작됩니다.
 
 ![m1](img/m1.png)
 
-모델 그림의 좌측 인풋 값 [여기서는 이별 관련 인공데이터](https://github.com/songys/Chatbot_data/tree/master)을 통해 데이터가 들어가고 아래 패딩 마스크와 함께 인코더 인풋은 인코더로 디코더 인풋은 디코더로 보내 각각 아웃풋 데이터를 얻습니다. 인풋 데이터는 디코더 인풋과 함께 디코더에 들어가고 디코더 아웃풋은 덴스층을 거쳐 아웃풋으로 출력됩니다.
+모델 그림의 좌측 인풋 값 여기서는 [이별 관련 인공데이터](https://github.com/songys/Chatbot_data/tree/master)을 통해 데이터가 들어가고 아래 패딩 마스크와 함께 인코더 인풋은 인코더로 디코더 인풋은 디코더로 보내 각각 아웃풋 데이터를 얻습니다. 인풋 데이터는 디코더 인풋과 함께 디코더에 들어가고 디코더 아웃풋은 덴스층을 거쳐 아웃풋으로 출력됩니다.
 
 ![pa](img/padding.png)
 
