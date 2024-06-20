@@ -4,7 +4,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # ERROR 메시지만 출력하도록 �
 import tensorflow as tf
 tf.get_logger().setLevel('ERROR')
 
-from tensorflow.keras.models import load_model
+# from tensorflow.keras.models import load_model
 from transformer.Models import transformer, PositionalEncoding, Encoder, Decoder
 from transformer.Layers import EncoderLayer, DecoderLayer
 from transformer.SubLayers import MultiHeadAttention
