@@ -14,7 +14,7 @@ import tensorflow_datasets as tfds
 
 tokenizer = tfds.deprecated.text.SubwordTextEncoder.load_from_file('tokenizer/tokenizer')
 
-model_name = 'model/transformer_20epoch_202406201156.h5'
+model_name = 'model/transformer_60epoch_202406201307.h5'
 
 # 저장된 모델 불러오기
 loaded_model = tf.keras.models.load_model(model_name,
@@ -64,9 +64,15 @@ def sentence_generation(sentence, model, tokernizer):
   predicted_sentence = tokenizer.decode(
       [i for i in prediction if i < tokenizer.vocab_size])
 
-  print('입력 : {}'.format(sentence))
-  print('출력 : {}'.format(predicted_sentence))
+  # print('나 : {}'.format(sentence))
+  print('챗봇 : {}'.format(predicted_sentence))
 
   return predicted_sentence
 
-sentence_generation('지금까지 어디 있었어?', loaded_model, tokenizer)
+def real_time_translation(model, tokenizer):
+  print("종료를 원하시면 '종료'를 입력해주세요.")
+  while True:
+    sentence = input("나 : ")
+    if sentence == '종료':
+      break
+    sentence_generation(sentence, model, tokenizer)

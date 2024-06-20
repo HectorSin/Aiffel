@@ -3,14 +3,7 @@ import tensorflow_datasets as tfds
 import datetime
 import os
 import re
-# import numpy as np
-# import matplotlib.pyplot as plt
-# from tensorflow.python.client import device_lib
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-# from transformer.Models import create_padding_mask, create_look_ahead_mask, PositionalEncoding
-# from transformer.SubLayers import MultiHeadAttention, point_wise_feed_forward_network
-# from transformer.Modules import scaled_dot_product_attention
-# from transformer.Layers import EncoderLayer, DecoderLayer
 from transformer.Models import transformer, PositionalEncoding, Encoder, Decoder
 from transformer.Layers import EncoderLayer, DecoderLayer
 from transformer.SubLayers import MultiHeadAttention
@@ -139,7 +132,7 @@ if __name__ == '__main__':
     model.summary()
 
     # 데이터셋 사용하여 모델 학습
-    EPOCHS = 20  # 예시 값
+    EPOCHS = 60  # 예시 값
     model.fit(dataset, epochs=EPOCHS)
     time = datetime.datetime.now().strftime('%Y%m%d%H%M')
     model_name = f'model/transformer_{EPOCHS}epoch_{time}.h5'

@@ -25,9 +25,29 @@
 
 # 파일 설명
 
+```
+Aiffel/
+├── Quests/
+│   ├── Quest8_20240619/
+│   │   ├── data/
+│   │   │   └── __pycache__/
+│   │   ├── model/
+│   │   │   ├── transformer_20epoch_202406201156.h5
+│   │   ├── tokenizer/
+│   │   │   ├── tokenizer
+│   │   ├── transformer/
+│   │   │   ├── Layers.py
+│   │   │   ├── Models.py
+│   │   │   ├── SubLayers.py
+│   │   ├── train.py
+│   │   ├── test.py
+```
+
 # 모델 설명
 
 # 실행 결과
+![chat](img/chatbot.png)
+실행결과 간단한 문장에 대한 비슷한 맥락의 대답을 시행하는 거 같다.
 
 # Challenge
 
