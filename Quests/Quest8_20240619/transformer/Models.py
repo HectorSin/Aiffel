@@ -157,8 +157,8 @@ def transformer(vocab_size, num_layers, units, d_model, num_heads, dropout, name
     look_ahead_mask = tf.keras.layers.Lambda(create_look_ahead_mask, output_shape=(1, None, None), name='look_ahead_mask')(dec_inputs)
     dec_padding_mask = tf.keras.layers.Lambda(create_padding_mask, output_shape=(1, 1, None), name='dec_padding_mask')(inputs)
 
-    enc_output = Encoder(num_layers, d_model, num_heads, units, vocab_size, maximum_position_encoding=vocab_size)(inputs, training=True, mask=enc_padding_mask)
-    dec_output = Decoder(num_layers, d_model, num_heads, units, vocab_size, maximum_position_encoding=vocab_size)(dec_inputs, enc_output, training=True, look_ahead_mask=look_ahead_mask, padding_mask=dec_padding_mask)
+    enc_output = Encoder(num_layers, d_model, num_heads, units, vocab_size, maximum_position_encoding=vocab_size, rate=dropout)(inputs, training=True, mask=enc_padding_mask)
+    dec_output = Decoder(num_layers, d_model, num_heads, units, vocab_size, maximum_position_encoding=vocab_size, rate=dropout)(dec_inputs, enc_output, training=True, look_ahead_mask=look_ahead_mask, padding_mask=dec_padding_mask)
 
     outputs = tf.keras.layers.Dense(units=vocab_size, name="outputs")(dec_output)
 
