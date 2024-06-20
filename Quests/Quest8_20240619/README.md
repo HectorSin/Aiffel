@@ -29,8 +29,11 @@
 이하 동문
 
 4. 트랜스포머 깃헙의 코드들을 불러와 구현해보기
+
 ![git](img/github.png)
-최대한 트랜스포머 깃헙 페이지 코드들의 구성도를 따라서 구현해보았습니다.
+
+최대한 트랜스포머 깃헙 페이지 코드들의 구성도를 따라서 파일들을 구현해보았습니다.
+[아래 트랜스포머 깃헙 페이지 폴더]
 
 ![atten](img/attention.png)
 
@@ -54,11 +57,21 @@ Quest8_20240619/
 
 ![class](img/class.png)
 
+# Requirements
+
+1. Python 3.9
+2. Tensorflow 4.9.3
+3. numpy 1.23.0
+4. tensorflow_datasets 4.9.2
+
 # 모델 설명
+
+
 
 
 # 실행 결과
 ![chat](img/chatbot.png)
+
 실행결과 간단한 문장에 대한 비슷한 맥락의 대답을 시행하는 거 같다.
 
 # Challenge
