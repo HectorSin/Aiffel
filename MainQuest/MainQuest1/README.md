@@ -58,6 +58,11 @@
 
 # 파일 설명
 
+transformer/ 폴더 내의 모든 파일 (Layer.py, Loss.py, Models.py, Modules.py, SubLayers.py)은 학습에 필요한 모든 모델이 포함되어 있습니다.
+
+train.py를 실행해서 학습을 진행할 수 있고 진행된 결과물은 model/{날짜}_{에폭}epoch_transformer.h5 형식으로 model/ 폴더 내에 생성되게 됩니다.
+
+chatbot.py를 실행해서 학습된 모델과 실시간으로 원하는 텍스트로 답변을 생성 할 수 있습니다. [모든 주요 함수들은 translator.py안에 내제]
 
 # Requirements
 
@@ -94,10 +99,6 @@ k는 컨텍스트 윈도우의 크기이며, 조건부 확률 P는 매개변수 
 ![paper](img/paper.png)
 
 다층 Transformer 디코더를 언어모델로 사용하고, 입력 컨텍스트 토큰에 Multi-Headed Self-Attention Operation을 적용해 Poision-wise Feedforward Layer를 통해 대상 토큰에 대한 출력 분포를 생성한다고 한다.
-
-
-
-
 
 # 결과 화면
 
