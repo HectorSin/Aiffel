@@ -1,7 +1,7 @@
 # 프로젝트 설명
 **프로젝트: 논문 코드 구현**
 
-## [논문 클릭](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)
+## 참고 논문[클릭](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)
 
 ## 데이터
 ![data](img/data.png)
@@ -76,6 +76,26 @@
 디코더 속 세부 층들은 [디코더 레이어](transformer/Layers.py)에서 확인할 수 있습니다.
 
 ## 논문 비교
+
+$L_{1}(U) = \sum_i \log P(u_{i} | u_{i-k}, ..., u_{i-1}; \Theta)$
+
+![Loss](img/loss.png)
+
+이전 텍스트들을 통해 계산한 확룔값에 로그취한 값들(log_softmax)을 더하는 방식(tf.gather)으로 수식이 구성이 되어 있어, 코드로 구현
+
+논문 Framework에서 볼 수 있듯이 논문 속 모델은 위 수식에 맞게 구현이 되어 있다.
+k는 컨텍스트 윈도우의 크기이며, 조건부 확률 P는 매개변수 Θ를 가진 신경망을 사용하여 모델링되어 있다.
+
+![back](img/back.png)
+![back2](img/back2.png)
+
+하지만 모델 빌드및 학습까지 성공했지만 적절한 문장을 생성하지 않아 주석처리 후 기존 SparseCrossEntropy 로스로 복귀
+
+![paper](img/paper.png)
+
+다층 Transformer 디코더를 언어모델로 사용하고, 입력 컨텍스트 토큰에 Multi-Headed Self-Attention Operation을 적용해 Poision-wise Feedforward Layer를 통해 대상 토큰에 대한 출력 분포를 생성한다고 한다.
+
+
 
 
 

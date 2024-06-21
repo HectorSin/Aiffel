@@ -10,6 +10,7 @@ import tensorflow_datasets as tfds
 import datetime
 import re
 from transformer.Models import transformer
+from transformer.Loss import loss_function
 
 # 하이퍼파라미터
 MAX_SAMPLES = 50000
@@ -118,6 +119,8 @@ UNITS = 512  # 예시 값
 DROPOUT = 0.15  # 예시 값
 EPOCHS = 20  # 예시 값
 
+
+
 if __name__ == '__main__':
 
     model = transformer(
@@ -132,6 +135,7 @@ if __name__ == '__main__':
     # 모델 컴파일
     learning_rate = 1e-5
     model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate),
+                # loss = loss_function,
                 loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                 metrics=[tf.keras.metrics.SparseCategoricalAccuracy()])
 

@@ -12,17 +12,19 @@ from train import preprocess_sentence, tokenizer, START_TOKEN, END_TOKEN, MAX_LE
 import tensorflow_datasets as tfds
 from translator import sentence_generation
 from translator import real_time_translation
+# from transformer.Loss import loss_function
 
 tokenizer = tfds.deprecated.text.SubwordTextEncoder.load_from_file('tokenizer/tokenizer')
 model_location = 'model/'
 
-model = '202406211514_20epoch_transformer.h5'
+model = '202406211642_20epoch_transformer.h5'
 
 model_name = model_location + model
 
 # 저장된 모델 불러오기
 loaded_model = tf.keras.models.load_model(model_name,
-                                          custom_objects={'PositionalEncoding': PositionalEncoding,
+                                          custom_objects={#'loss_function': loss_function,
+                                                          'PositionalEncoding': PositionalEncoding,
                                                           'MultiHeadAttention': MultiHeadAttention,
                                                           # 'EncoderLayer': EncoderLayer,
                                                           'DecoderLayer': DecoderLayer,
@@ -30,6 +32,6 @@ loaded_model = tf.keras.models.load_model(model_name,
                                                           'Decoder': Decoder})
 
 
-sentence_generation('지금까지 어디 있었어?', loaded_model, tokenizer)
+sentence_generation('지금까지 어디 있었어? 좀 우울한데 어떻게 해야 할까?', loaded_model, tokenizer)
 
 # real_time_translation(loaded_model, tokenizer)
