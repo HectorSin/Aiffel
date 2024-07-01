@@ -60,6 +60,7 @@ Res 50
 # 실행 결과
 
 ## Cat vs Dogs
+![cat](img/cat.png)
 
 ## Plain vs Residual
 Plain Accuracy
