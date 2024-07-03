@@ -98,6 +98,33 @@ def mixup(image, label, prob=1.0, batch_size=16, img_size=224, num_classes=120):
     return mixed_imgs, mixed_labels
 ```
 
+## Random Augmentation
+
+```
+# augment with randomness
+def augment(image, label):
+    if random.choice([True, False]):
+        image = tf.image.random_flip_left_right(image)
+    if random.choice([True, False]):
+        image = tf.image.random_flip_up_down(image)
+    if random.choice([True, False]):
+        brightness_factor = random.uniform(0, 0.2)
+        image = tf.image.random_brightness(image, brightness_factor)
+    if random.choice([True, False]):
+        contrast_lower = random.uniform(0.2, 0.5)
+        contrast_upper = random.uniform(contrast_lower, 0.5)
+        image = tf.image.random_contrast(image, contrast_lower, contrast_upper)
+    if random.choice([True, False]):
+        hue_factor = random.uniform(0, 0.2)
+        image = tf.image.random_hue(image, hue_factor)
+    if random.choice([True, False]):
+        saturation_lower = random.uniform(0.2, 0.5)
+        saturation_upper = random.uniform(saturation_lower, 0.5)  # Ensure upper is always >= lower
+        image = tf.image.random_saturation(image, saturation_lower, saturation_upper)
+    image = tf.clip_by_value(image, 0, 1)
+    return image, label
+```
+
 # 실행 결과
 
 ## resnet50 vs aug_resnet50
@@ -152,6 +179,7 @@ augmentation, cutmix 적용에 랜덤성을 부여하는 방식으로 진행해 
 
 # 회고
 
+데이터 증강에 대해서 좀더 깊게 다룰 수 있던 시간이었습니다.
 
 ## 배운점
 
