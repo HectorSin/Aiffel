@@ -22,10 +22,81 @@
 
 # 파일 설명
 
+* /model 폴더
+
+최대한 코드들을 모듈화 시켜 테스트를 진행해보고 싶었지만 ipynb특성상 2차 import가 힘든거 같아 더이상 진행 X
+
+* [Project_trial.ipynb](Project_trial.ipynb)
+
+코드의 전반적인 실행을 위해 기본 코드들을 생성한 ipynb
+
+* [cutmix_test.ipynb](cutmix_test.ipynb)
+
+Augmentation의 랜덤화 및 다양한 환경의 테스트를 진행한 ipynb
+
+* [mixup_test.ipynb](mixup_test.ipynb)
+
+이전 실험 후 Mixup의 성능 테스트를 진행하기 위해 새로 진행한 테스트 ipynb
+
 # 모델 설명
 ## CutMix
 
+```{python}
+# cutmix
+def cutmix(image, label, prob = 1.0, batch_size = 16, img_size = 224):
+    mixed_imgs = []
+    mixed_labels = []
+
+    for i in range(batch_size):
+        image_a = image[i]
+        label_a = label[i]
+        j = tf.cast(tf.random.uniform([], 0, batch_size), tf.int32)
+        image_b = image[j]
+        label_b = label[j]
+        x_min, y_min, x_max, y_max = get_clip_box(image_a, image_b)
+        mixed_img, mixed_label = mixer(image_a, image_b, label_a, label_b, x_min, y_min, x_max, y_max)
+        mixed_imgs.append(mixed_img)
+        mixed_labels.append(mixed_label)
+
+    mixed_imgs = tf.reshape(tf.stack(mixed_imgs), (batch_size, img_size, img_size, 3))
+    mixed_labels = tf.reshape(tf.stack(mixed_labels), (batch_size, num_classes))
+    return mixed_imgs, mixed_labels
+```
+
 ## MixUp
+
+```{python}
+# function for mixup
+def mixup_2_images(image_a, image_b, label_a, label_b):
+    ratio = tf.random.uniform([], 0, 1)
+
+    if len(label_a.shape)==0:
+        label_a = tf.one_hot(label_a, num_classes)
+    if len(label_b.shape)==0:
+        label_b = tf.one_hot(label_b, num_classes)
+    mixed_image= (1-ratio)*image_a + ratio*image_b
+    mixed_label = (1-ratio)*label_a + ratio*label_b
+
+    return mixed_image, mixed_label
+
+def mixup(image, label, prob=1.0, batch_size=16, img_size=224, num_classes=120):
+    mixed_imgs = []
+    mixed_labels = []
+
+    for i in range(batch_size):
+        image_a = image[i]
+        label_a = label[i]
+        j = tf.cast(tf.random.uniform([],0,batch_size), tf.int32)
+        image_b = image[j]
+        label_b = label[j]
+        mixed_img, mixed_label = mixup_2_images(image_a, image_b, label_a, label_b)
+        mixed_imgs.append(mixed_img)
+        mixed_labels.append(mixed_label)
+
+    mixed_imgs = tf.reshape(tf.stack(mixed_imgs), (batch_size, img_size, img_size, 3))
+    mixed_labels = tf.reshape(tf.stack(mixed_labels), (batch_size, num_classes))
+    return mixed_imgs, mixed_labels
+```
 
 # 실행 결과
 
