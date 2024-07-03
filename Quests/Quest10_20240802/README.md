@@ -45,9 +45,11 @@
 
 이처럼 각 코드의 줄의 실행여부, 수치정도 모두 랜덤성 부여해서 augmentation을 진행하게 수정
 
-## Random Aug & MixUp
+## Random Aug & CutMix
 
 ![50](img/20epoch.png)
+
+[코드](mixup_test.ipynb)
 
 augmentation, cutmix 적용에 랜덤성을 부여하는 방식으로 진행해 보았는데 augmentation을 넣지 않고 cutmix만 진행한 경우 가장 validation에서 높은 정확도 및 낮은 에러를 보이는 것을 볼 수 있다.
 
@@ -55,8 +57,27 @@ augmentation, cutmix 적용에 랜덤성을 부여하는 방식으로 진행해 
 -> 가정 2: 특정 augmentation 기법중에 모델 성능에 악영향을 주지 않는 기법도 있을 수 있다
 
 -> 실험 방법: 가정 1,2 모두 확인을 위해서는 cutmix는 제외해 두고 각 augmentation 기법 별 성능 변화추이를 확인하면 체크 가능
+[이동](#다음-실험augmentation)
 
 또한 augmentation만 수행한 모델의 경우 시작 성능이 꾀 높게 나오지만 학습에 변동성이 보이지 않아, 더 많은 epoch을 줘야지 augmentation 기법에 대해 제대로 다룰 수 있을것으로 판단
+
+## CutMix vs MixUp
+
+공정한 비교를 위해 전 실험에서 의구심이 많이 들었던 augmentation 기법을 우선 사용하지 않고 CutMix 와 MixUp만을 사용해서 20epoch으로 테스트 진행
+
+![mixs](img/cutmixmixup.png)
+
+[코드](mixup_test.ipynb)
+
+두가지 경우의 수만을 가지고 테스트를 진행해본 결과 크게 어떤 모델이 더 뛰어나다고는 해당 결과만을 가지고는 제대로 확인 불가로 보임
+
+-> 새로운 실험: 대략 50 에폭 수준의 새로운 테스트 진행
+[이동](#다음-실험50에폭)
+
+## 다음 실험(augmentation)
+
+
+## 다음 실험(50에폭)
 
 # 회고
 
