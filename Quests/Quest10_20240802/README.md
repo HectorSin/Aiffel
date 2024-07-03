@@ -10,24 +10,31 @@
 1. 
 
 # 목표
-1.  ResNet-34, ResNet-50 모델 구현이 정상적으로 진행되었는가? [모델 설명](#모델-설명)
-- 블록함수 구현이 제대로 진행되었으며 구현한 모델의 summary가 예상된 형태로 출력되었다.
+1.  CutMix와 MixUp 기법을 ResNet50 분류기에 성공적으로 적용하였는가? [모델 설명](#모델-설명)
+- CutMix와 MixUp을 적용한 데이터셋으로 훈련한 각각의 ResNet 모델이 수렴하였다.
 
-2. 구현한 ResNet 모델을 활용하여 Image Classification 모델 훈련이 가능한가? [실행 결과](#cat-vs-dogs)
-- tensorflow-datasets에서 제공하는 cats_vs_dogs 데이터셋으로 학습 진행 시 loss가 감소하는 것이 확인되었다.
+2. 다양한 실험을 통해 태스크에 최적인 Augmentation 기법을 찾아내었는가?[실행 결과](#실행 결과)
+- 각 Augmentation 기법을 적용하고, 그에 따른 성능 비교 분석 및 문제점을 서술하였음
 
-3. Ablation Study 결과가 바른 포맷으로 제출되었는가? [실행 결과](#plain-vs-residual)
+3. 여러가지 Augmentation 기법을 적용한 결과를 체계적으로 비교분석하였는가? [실행 결과](#plain-vs-residual)
 
-- ResNet-34, ResNet-50 각각 plain모델과 residual모델을 동일한 epoch만큼 학습시켰을 때의 validation accuracy 기준으로 Ablation Study 결과표가 작성되었다.
+- 기본 Augmentation, CutMix, MixUp이 적용된 결과를 시각화와 함께 체계적으로 분석하였다.
 
 # 파일 설명
 
 # 모델 설명
-## ResNet-50
+## CutMix
+
+## MixUp
 
 # 실행 결과
 
 ## resnet50 vs aug_resnet50
+![fist](img/accuracy1.png)
+20에폭으로 테스트를 진행해봤는데 단순 Augmentation을 취한 모델이 전체적으로 취하지 않은 모델보다 성능 면에서 좋지 못한 결과물을 보이고 있다
+-> 여러 Augmentation 기법들을 수행해보고 성능면에서 진척도를 보이는 기법 찾기
+
+
 
 ## 훈련 과정 시각화
 
