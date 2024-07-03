@@ -45,6 +45,8 @@
 
 이처럼 각 코드의 줄의 실행여부, 수치정도 모두 랜덤성 부여해서 augmentation을 진행하게 수정
 
+## Random Aug & MixUp
+
 ![50](img/20epoch.png)
 
 augmentation, cutmix 적용에 랜덤성을 부여하는 방식으로 진행해 보았는데 augmentation을 넣지 않고 cutmix만 진행한 경우 가장 validation에서 높은 정확도 및 낮은 에러를 보이는 것을 볼 수 있다.
