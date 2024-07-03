@@ -45,6 +45,16 @@
 
 이처럼 각 코드의 줄의 실행여부, 수치정도 모두 랜덤성 부여해서 augmentation을 진행하게 수정
 
+![50](img/20epoch.png)
+
+augmentation, cutmix 적용에 랜덤성을 부여하는 방식으로 진행해 보았는데 augmentation을 넣지 않고 cutmix만 진행한 경우 가장 validation에서 높은 정확도 및 낮은 에러를 보이는 것을 볼 수 있다.
+
+-> 가정 1: augmenation은 모델 성능에 악 영향을 끼친다
+-> 가정 2: 특정 augmentation 기법중에 모델 성능에 악영향을 주지 않는 기법도 있을 수 있다
+
+-> 실험 방법: 가정 1,2 모두 확인을 위해서는 cutmix는 제외해 두고 각 augmentation 기법 별 성능 변화추이를 확인하면 체크 가능
+
+또한 augmentation만 수행한 모델의 경우 시작 성능이 꾀 높게 나오지만 학습에 변동성이 보이지 않아, 더 많은 epoch을 줘야지 augmentation 기법에 대해 제대로 다룰 수 있을것으로 판단
 
 # 회고
 
