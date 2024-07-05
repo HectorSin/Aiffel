@@ -28,7 +28,23 @@
 
 # 실행 결과
 
+## CAM 방식의 시각화
+
+![cam](img/cam.png)
+
+## Grad-CAM 방식의 시각화
+
+
+
 # 결과 분석
+
+## CAM
+
+![cm](img/cam-iou.png)
+
+## Grad-CAM
+
+![gcm](img/gradcam-iou.png)
 
 # 회고
 
