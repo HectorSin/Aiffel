@@ -20,6 +20,7 @@ cam_model = tf.keras.models.load_model(cam_model_path)
 
 # 기본 사진
 item = get_one(ds_test)
+
 # Grad-CAM 이미지
 grad_cam5_image = generate_grad_cam(cam_model, 'conv5_block3_out', item)
 grad_cam4_image = generate_grad_cam(cam_model, 'conv4_block3_out', item)
@@ -78,6 +79,3 @@ plt.imshow(blended5_image)
 plt.title('Blended Conv5 Image')
 
 plt.show()
-
-
-
