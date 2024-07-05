@@ -42,9 +42,13 @@
 
 ![cm](img/cam-iou.png)
 
+![cm](img/cam-iou2.png)
+
 ## Grad-CAM
 
 ![gcm](img/gradcam-iou.png)
+
+![gcm](img/gradcam-iou2.png)
 
 # 회고
 
