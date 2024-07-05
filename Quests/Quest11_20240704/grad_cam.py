@@ -45,21 +45,37 @@ b_image = cv2.drawContours(b_image, [rect], 0, (0, 0, 255), 2)
 pred_bbox = rect_to_minmax(rect, item['image'])
 iou = get_iou(pred_bbox, item['objects']['bbox'][0])
 
-plt.subplot(2, 2, 1)
-plt.imshow(item['image'])
-plt.title('Original Image')
+plt.subplot(2, 4, 1)
+plt.imshow(grad_cam2_image)
+plt.title('Conv2 Image')
 
-plt.subplot(2, 2, 2)
+plt.subplot(2, 4, 2)
+plt.imshow(grad_cam3_image)
+plt.title('Conv3 Image')
+
+plt.subplot(2, 4, 3)
+plt.imshow(grad_cam4_image)
+plt.title('Conv4 Image')
+
+plt.subplot(2, 4, 4)
 plt.imshow(grad_cam5_image)
-plt.title('Grad-CAM Image')
+plt.title('Conv5 Image')
 
-plt.subplot(2, 2, 3)
+plt.subplot(2, 4, 5)
+plt.imshow(blended2_image)
+plt.title('Blended Conv2 Image')
+
+plt.subplot(2, 4, 6)
+plt.imshow(blended3_image)
+plt.title('Blended Conv3 Image')
+
+plt.subplot(2, 4, 7)
+plt.imshow(blended4_image)
+plt.title('Blended Conv4 Image')
+
+plt.subplot(2, 4, 8)
 plt.imshow(blended5_image)
-plt.title('Blended Image')
-
-plt.subplot(2, 2, 4)
-plt.imshow(b_image)
-plt.title(f'Bounding Box\nIoU: {iou:.2f}')
+plt.title('Blended Conv5 Image')
 
 plt.show()
 
