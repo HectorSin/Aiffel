@@ -1,7 +1,4 @@
-Quests/Quest4_20240604/models/
-
-Quests/quest5_20240605/models/
-# Quests/quest5_20240605/images/
+# Study Ipynb
 Quests/quest5_20240605/aiffel.ipynb
 Quests/quest6_20240612/aiffel.ipynb
 Quests/quest7_20240613/aiffel.ipynb
@@ -9,14 +6,22 @@ Quests/Quest9_20240701/aiffel.ipynb
 Quests/Quest10_20240702/aiffel1.ipynb
 Quests/Quest10_20240702/aiffel2.ipynb
 Quests/Quest11_20240704/aiffel.ipynb
+Quests/Quest12_20240708/aiffel.ipynb
+
+# Models
+MainQuest/MainQuest1/model/
+Quests/Quest4_20240604/models/
+Quests/quest5_20240605/models/
+Quests/Quest6_20240612/data/GoogleNews-vectors-negative300.bin.gz
+Quests/Quest8_20240619/model/
+Quests/Quest11_20240704/model/
+
+# Books
 Book/
 
+# Data
 ShareValue/CVreal_time/data/
 Quests/quest7_20240613/data/
 
-Quests/Quest8_20240619/model/
-Quests/Quest8_20240619/__pycache__/
 
-MainQuest/MainQuest1/model/
 
-Quests/Quest6_20240612/data/GoogleNews-vectors-negative300.bin.gz
