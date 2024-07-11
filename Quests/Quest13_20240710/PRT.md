@@ -24,7 +24,7 @@
     > - [ ]  Metrics 선정 이유
     > - [ ]  Loss 선정 이유
 
-    - study.ipynb에 설명을 마크다운 형태로 잘 기록함
+    - study.ipynb에 설명을 마크다운 형태로 잘 기록함  
         ![](review_image/augmentation_markdown.png)
         ![](review_image/jaccard_markdown.png)
 
@@ -36,7 +36,7 @@
     - [ ]  각 실험을 시각화하여 비교하였나요?
     - [ ]  모든 실험 결과가 기록되었나요?
 
-- [ ]  **4. 프로젝트에 대한 회고가 상세히 기록 되어 있나요? (회고, 정리)**
+- [ ]  **4. 프로젝트에 대한 회고가 상세히 기록 되어 있나요? (회고, 정리)**  
     ![alt text](review_image/01.png)  
     - [x]  배운 점
     - [ ]  아쉬운 점
